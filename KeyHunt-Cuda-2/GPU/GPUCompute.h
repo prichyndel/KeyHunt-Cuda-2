@@ -16,7 +16,7 @@
 */
 
 #include <device_atomic_functions.h>
-#include <device_functions.h>
+#include <cuda_runtime.h>
 
 __device__ int test_bit_set_bit(const uint8_t* buf, uint32_t bit)
 {
