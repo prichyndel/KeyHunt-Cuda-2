@@ -96,7 +96,7 @@ KeyHunt::KeyHunt(const std::string& addressFile, const std::vector<unsigned char
 				bloom->add(buf, 20);
 				memcpy(DATA + (i * 20), buf, 20);
 				if (i % percent == 0) {
-					printf("\rLoading      : %llu %%", (i / percent));
+					printf("\rLoading      : %lu %%", (i / percent));
 					fflush(stdout);
 				}
 			}
@@ -145,9 +145,9 @@ KeyHunt::KeyHunt(const std::string& addressFile, const std::vector<unsigned char
 	ctimeBuff = ctime(&now);
 	printf("Start Time   : %s", ctimeBuff);
 
-	printf("Global start : %064s (%d bit)\n", this->rangeStart.GetBase16().c_str(), this->rangeStart.GetBitLength());
-	printf("Global end   : %064s (%d bit)\n", this->rangeEnd.GetBase16().c_str(), this->rangeEnd.GetBitLength());
-	printf("Global range : %064s (%d bit)\n", this->rangeDiff2.GetBase16().c_str(), this->rangeDiff2.GetBitLength());
+	printf("Global start : %64s (%d bit)\n", this->rangeStart.GetBase16().c_str(), this->rangeStart.GetBitLength());
+	printf("Global end   : %64s (%d bit)\n", this->rangeEnd.GetBase16().c_str(), this->rangeEnd.GetBitLength());
+	printf("Global range : %64s (%d bit)\n", this->rangeDiff2.GetBase16().c_str(), this->rangeDiff2.GetBitLength());
 
 }
 
@@ -639,13 +639,13 @@ void KeyHunt::getGPUStartingKeys(int thId, Int & tRangeStart, Int & tRangeEnd, i
 
 
 		if (i < rangeShowThreasold) {
-			printf("GPU %ld Thread %06d: %064s : %64s\n", (thId - 0x80L), i, tRangeStart2.GetBase16().c_str(), tRangeEnd2.GetBase16().c_str());
+			printf("GPU %ld Thread %06d: %64s : %64s\n", (thId - 0x80L), i, tRangeStart2.GetBase16().c_str(), tRangeEnd2.GetBase16().c_str());
 		}
 		else if (rangeShowCounter < 1) {
 			printf("                   .\n");
 			rangeShowCounter++;
 			if (i + 1 == nbThread) {
-				printf("GPU %d Thread %06d: %064s : %64s\n", (thId - 0x80L), i, tRangeStart2.GetBase16().c_str(), tRangeEnd2.GetBase16().c_str());
+				printf("GPU %ld Thread %06d: %64s : %64s\n", (thId - 0x80L), i, tRangeStart2.GetBase16().c_str(), tRangeEnd2.GetBase16().c_str());
 			}
 		}
 		else if (i + 1 == nbThread) {
