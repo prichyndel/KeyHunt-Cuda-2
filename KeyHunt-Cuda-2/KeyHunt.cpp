@@ -639,17 +639,17 @@ void KeyHunt::getGPUStartingKeys(int thId, Int & tRangeStart, Int & tRangeEnd, i
 
 
 		if (i < rangeShowThreasold) {
-			printf("GPU %d Thread %06d: %064s : %064s\n", (thId - 0x80L), i, tRangeStart2.GetBase16().c_str(), tRangeEnd2.GetBase16().c_str());
+			printf("GPU %ld Thread %06d: %064s : %64s\n", (thId - 0x80L), i, tRangeStart2.GetBase16().c_str(), tRangeEnd2.GetBase16().c_str());
 		}
 		else if (rangeShowCounter < 1) {
 			printf("                   .\n");
 			rangeShowCounter++;
 			if (i + 1 == nbThread) {
-				printf("GPU %d Thread %06d: %064s : %064s\n", (thId - 0x80L), i, tRangeStart2.GetBase16().c_str(), tRangeEnd2.GetBase16().c_str());
+				printf("GPU %d Thread %06d: %064s : %64s\n", (thId - 0x80L), i, tRangeStart2.GetBase16().c_str(), tRangeEnd2.GetBase16().c_str());
 			}
 		}
 		else if (i + 1 == nbThread) {
-			printf("GPU %d Thread %06d: %064s : %064s\n", (thId - 0x80L), i, tRangeStart2.GetBase16().c_str(), tRangeEnd2.GetBase16().c_str());
+			printf("GPU %ld Thread %06d: %64s : %64s\n", (thId - 0x80L), i, tRangeStart2.GetBase16().c_str(), tRangeEnd2.GetBase16().c_str());
 		}
 
 		tRangeStart2.Add(&tRangeDiff);
@@ -848,17 +848,17 @@ void KeyHunt::Search(int nbThread, std::vector<int> gpuId, std::vector<int> grid
 		params[i].rangeEnd.Set(&rangeStart);
 
 		if (i < rangeShowThreasold) {
-			printf("CPU Thread %02d: %064s : %064s\n", i, params[i].rangeStart.GetBase16().c_str(), params[i].rangeEnd.GetBase16().c_str());
+			printf("CPU Thread %02d: %64s : %64s\n", i, params[i].rangeStart.GetBase16().c_str(), params[i].rangeEnd.GetBase16().c_str());
 		}
 		else if (rangeShowCounter < 1) {
 			printf("             .\n");
 			rangeShowCounter++;
 			if (i + 1 == nbCPUThread) {
-				printf("CPU Thread %02d: %064s : %064s\n", i, params[i].rangeStart.GetBase16().c_str(), params[i].rangeEnd.GetBase16().c_str());
+				printf("CPU Thread %02d: %64s : %64s\n", i, params[i].rangeStart.GetBase16().c_str(), params[i].rangeEnd.GetBase16().c_str());
 			}
 		}
 		else if (i + 1 == nbCPUThread) {
-			printf("CPU Thread %02d: %064s : %064s\n", i, params[i].rangeStart.GetBase16().c_str(), params[i].rangeEnd.GetBase16().c_str());
+			printf("CPU Thread %02d: %64s : %64s\n", i, params[i].rangeStart.GetBase16().c_str(), params[i].rangeEnd.GetBase16().c_str());
 		}
 
 #ifdef WIN64
@@ -1056,7 +1056,7 @@ std::string KeyHunt::formatThousands(uint64_t x)
 {
 	char buf[32] = "";
 
-	sprintf(buf, "%llu", x);
+	sprintf(buf, "%lu", x);
 
 	std::string s(buf);
 
